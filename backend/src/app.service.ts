@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { UrlsService } from 'src/urls/urls.service';
-
+import { UrlsService } from './urls/urls.service';
 
 @Injectable()
 export class AppService {

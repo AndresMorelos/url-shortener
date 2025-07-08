@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUrlDto } from './dto/create-url.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { AccessTokenPayload } from 'src/auth/types/tokens';
+import { PrismaService } from '../prisma/prisma.service';
+import { AccessTokenPayload } from '../auth/types/tokens';
 import ShortUniqueId from 'short-unique-id';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
@@ -75,7 +75,6 @@ export class UrlsService {
     }
 
     remove(user: AccessTokenPayload, id: number) {
-        console.log(this.prisma);
         return this.prisma.customPrismaClient.url.softDelete({
             userId: user.sub,
             id,

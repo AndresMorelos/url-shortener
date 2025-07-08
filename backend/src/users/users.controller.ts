@@ -10,14 +10,14 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { JwtGuard } from 'src/auth/guards/jwt.guard';
+import { JwtGuard } from '../auth/guards/jwt.guard';
 import {
     ApiBearerAuth,
     ApiOkResponse,
     ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { AccessTokenPayload } from 'src/auth/types/tokens';
-import { AuthenticatedUser } from 'src/auth/decorators/user.decorator';
+import { AccessTokenPayload } from '../auth/types/tokens';
+import { AuthenticatedUser } from '../auth/decorators/user.decorator';
 import { UserEntity } from './entities/user.entity';
 
 @ApiBearerAuth()

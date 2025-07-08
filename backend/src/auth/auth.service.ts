@@ -6,11 +6,11 @@ import {
     UnauthorizedException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
-import { User } from 'src/users/dto/user.dto';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { User } from '../users/dto/user.dto';
+import { CreateUserDto } from '../users/dto/create-user.dto';
 import { AccessToken } from './types/tokens';
 
 @Injectable()

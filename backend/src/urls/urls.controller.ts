@@ -20,10 +20,10 @@ import {
     ApiNoContentResponse,
     ApiResponse,
 } from '@nestjs/swagger';
-import { JwtGuard } from 'src/auth/guards/jwt.guard';
-import { AuthenticatedUser } from 'src/auth/decorators/user.decorator';
-import { AccessTokenPayload } from 'src/auth/types/tokens';
-import { Public } from 'src/auth/decorators/public.decorator';
+import { JwtGuard } from '../auth/guards/jwt.guard';
+import { AuthenticatedUser } from '../auth/decorators/user.decorator';
+import { AccessTokenPayload } from '../auth/types/tokens';
+import { Public } from '../auth/decorators/public.decorator';
 import { UrlEntity } from './entities/url.entity';
 
 @UseGuards(JwtGuard)
@@ -32,7 +32,7 @@ import { UrlEntity } from './entities/url.entity';
     path: 'urls',
 })
 export class UrlsController {
-    constructor(private readonly urlsService: UrlsService) { }
+    constructor(private readonly urlsService: UrlsService) {}
 
     @ApiBearerAuth()
     @ApiResponse({
