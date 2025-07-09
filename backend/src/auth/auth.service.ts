@@ -41,7 +41,7 @@ export class AuthService {
             username: user.username,
         };
 
-        const jwtPrivateKey = this.configService.get<string>('jwtPrivateKey');
+        const jwtPrivateKey = this.configService.get<string>('JWT_PRIVATE_KEY');
 
         if (!jwtPrivateKey) {
             throw new InternalServerErrorException();

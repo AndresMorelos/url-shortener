@@ -15,7 +15,6 @@ import { useApiStore } from "@/hooks/use-api-store"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as yup from "yup"
-import * as Toast from "@radix-ui/react-toast"
 import { useToast } from "@/hooks/use-toast"
 
 type CreateShortUrlInputs = {
@@ -30,7 +29,6 @@ const schema = yup
 
 export function AdminPanel() {
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState("")
   const [shortenedUrl, setShortenedUrl] = useState<string | null>(null)
   const user = useApiStore((state) => state.user);
   const urls = useApiStore((state) => state.urls)
@@ -49,7 +47,6 @@ export function AdminPanel() {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<CreateShortUrlInputs>({
     resolver: yupResolver(schema),
@@ -69,7 +66,7 @@ export function AdminPanel() {
         })
       }
     } catch (error) {
-      setError("Failed to shorten URL. Please try again.")
+      console.error(error);
       toast({
         title: "Failed to shorten URL",
         description: "Please try again.",
@@ -89,6 +86,7 @@ export function AdminPanel() {
         variant: "success",
       })
     } catch (error) {
+      console.error(error);
       toast({
         title: "Failed to copy",
         description: "Please copy the URL manually.",
@@ -106,6 +104,7 @@ export function AdminPanel() {
         variant: "destructive",
       })
     } catch (error) {
+      console.error(error);
       toast({
         title: "Failed to delete url",
         description: "",
